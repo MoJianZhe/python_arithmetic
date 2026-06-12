@@ -1,19 +1,16 @@
 from dataclasses import asdict, dataclass
 import json
 
-@dataclass
+
 class LinkNode():
-    pre:'LinkNode'
-    val:None
     def __init__(self,val):
         self.pre = None
         self.val = val
         
 
 
-@dataclass
+
 class LinkStack():
-    tail:LinkNode
     def __init__(self):
         self.tail=None
         
@@ -39,4 +36,6 @@ if __name__=='__main__':
     print(s.pop())
     print(s.peek())
     print(s)
-    print(json.dumps(asdict(s)))
+    # json 会自动递归处理，把 node1 也转成字典
+    json_str = json.dumps(s, default=lambda obj: obj.__dict__, ensure_ascii=False)
+    print(json_str)
