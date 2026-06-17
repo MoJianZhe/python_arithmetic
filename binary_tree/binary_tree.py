@@ -94,7 +94,7 @@ def build_tree_from_list(values: list) -> TreeNode:
     i = 1
     n = len(values)
 
-    while queue and i < n:
+    while queue and i < n:  # queue 不为null , 防止无效输入，例如： [1, None, None, 2, 3]
         # 弹出当前父节点
         node = queue.popleft()
 
