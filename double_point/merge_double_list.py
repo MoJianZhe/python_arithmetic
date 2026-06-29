@@ -25,7 +25,7 @@ class Solution:
         return result.next
 
     ## labula solution
-    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+    def mergeTwoLists2(self, l1: ListNode, l2: ListNode) -> ListNode:
         # 虚拟头结点
         dummy = ListNode(-1)
         p = dummy
@@ -51,3 +51,4 @@ class Solution:
             p.next = p2
 
         return dummy.next
+    # 经常有读者问我，什么时候需要用虚拟头结点？我这里总结下：当你需要创造一条新链表的时候，可以使用虚拟头结点简化边界情况的处理。
