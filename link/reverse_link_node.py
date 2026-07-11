@@ -61,3 +61,16 @@ def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         cur = after       # 4. cur 往前走一步
         
     return pre      
+
+# 定义：输入一个单链表头结点，将该链表反转，返回新的头结点
+# by labula
+def reverseList_digui(self, head):
+    if head is None or head.next is None:
+        return head
+    last = self.reverseList(head.next) 
+    # 递归写法，如果用到了递归后的结果，就得把结果当做一个整体
+    # 如果没用到结果，那么就把它当做堆栈，例如 回文字符串的解法 huiwen_listnode.py
+    #
+    head.next.next = head 
+    head.next = None
+    return last
