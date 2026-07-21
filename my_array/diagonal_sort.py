@@ -19,3 +19,30 @@ def diagonalSort(self, mat: List[List[int]]) -> List[List[int]]:
             a = dic[j-i].pop()
             mat[i][j]= a
     return mat
+
+# solution by labula
+def diagonalSort(self, mat: List[List[int]]) -> List[List[int]]:
+    m, n = len(mat), len(mat[0])
+
+    # 存储所有对角线的元素列表
+    diagonals = {}
+
+    for i in range(m):
+        for j in range(n):
+            # 横纵坐标之差可以作为一条对角线的 ID
+            diagonalID = i - j
+            if diagonalID not in diagonals:
+                diagonals[diagonalID] = []
+            diagonals[diagonalID].append(mat[i][j])
+
+    # 从数组末尾删除元素效率较高，所以我们把 ArrayList 倒序排序
+    for diagonal in diagonals.values():
+        diagonal.sort(reverse=True)
+
+    # 把排序结果回填二维矩阵
+    for i in range(m):
+        for j in range(n):
+            diagonal = diagonals[i - j]
+            mat[i][j] = diagonal.pop()
+
+    return mat
